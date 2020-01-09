@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
-    private float xBound = 20.5f;
-    private float zBound = 7.8f;
+    private float xBound = 80.0f;
+    private float zBound = 80.0f;
     private Rigidbody shooterRb;
     
     // Start is called before the first frame update
@@ -45,6 +45,10 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
         }
 
+        if (transform.position.z < -zBound)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zBound);
+        }
         if (transform.position.z > zBound)
         {
             transform.position = new Vector3( transform.position.x, transform.position.y, zBound);
